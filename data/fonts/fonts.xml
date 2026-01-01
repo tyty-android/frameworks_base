@@ -36,97 +36,55 @@
 <familyset version="23">
     <!-- first font is default -->
     <family name="sans-serif">
-        <font weight="100" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="100" />
+        <font weight="200" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="200" />
         </font>
-        <font weight="200" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="200" />
+        <font weight="200" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="200" />
         </font>
-        <font weight="300" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="300" />
+        <font weight="300" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="300" />
         </font>
-        <font weight="400" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="400" />
+        <font weight="300" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="300" />
         </font>
-        <font weight="500" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="500" />
+        <font weight="400" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="400" />
         </font>
-        <font weight="600" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="600" />
+        <font weight="400" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="400" />
         </font>
-        <font weight="700" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="700" />
+        <font weight="500" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="500" />
         </font>
-        <font weight="800" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="800" />
+        <font weight="500" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="500" />
         </font>
-        <font weight="900" style="normal">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="0" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="900" />
+        <font weight="600" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="600" />
         </font>
-        <font weight="100" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="100" />
+        <font weight="600" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="600" />
         </font>
-        <font weight="200" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="200" />
+        <font weight="700" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="700" />
         </font>
-        <font weight="300" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="300" />
+        <font weight="700" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="700" />
         </font>
-        <font weight="400" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="400" />
+        <font weight="800" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="800" />
         </font>
-        <font weight="500" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="500" />
+        <font weight="800" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="800" />
         </font>
-        <font weight="600" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="600" />
+        <font weight="900" style="normal" postScriptName="SourceSans3VF-ExtraLight">SourceSans3VF-Upright.ttf
+            <axis tag="wght" stylevalue="900" />
         </font>
-        <font weight="700" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="700" />
+        <font weight="900" style="italic" postScriptName="SourceSans3VF-ExtraLightItalic">SourceSans3VF-Italic.ttf
+            <axis tag="wght" stylevalue="900" />
         </font>
-        <font weight="800" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="800" />
-        </font>
-        <font weight="900" style="italic">Roboto-Regular.ttf
-          <axis tag="ital" stylevalue="1" />
-          <axis tag="wdth" stylevalue="100" />
-          <axis tag="wght" stylevalue="900" />
-        </font>
-   </family>
+    </family>
 
 
     <!-- Note that aliases must come after the fonts they reference. -->
@@ -237,11 +195,72 @@
     <alias name="sans-serif-condensed-light" to="sans-serif-condensed" weight="300" />
     <alias name="sans-serif-condensed-medium" to="sans-serif-condensed" weight="500" />
 
+
     <family name="serif">
-        <font weight="400" style="normal" postScriptName="NotoSerif">NotoSerif-Regular.ttf</font>
-        <font weight="700" style="normal">NotoSerif-Bold.ttf</font>
-        <font weight="400" style="italic">NotoSerif-Italic.ttf</font>
-        <font weight="700" style="italic">NotoSerif-BoldItalic.ttf</font>
+        <font weight="200" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="200" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="200" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="200" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="300" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="300" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="300" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="300" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="400" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="400" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="400" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="400" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="500" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="500" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="500" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="500" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="600" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="600" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="600" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="600" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="700" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="700" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="700" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="700" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="800" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="800" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="800" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="800" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="900" style="normal">SourceSerif4Variable-Roman.ttf
+            <axis tag="wght" stylevalue="900" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
+        <font weight="900" style="italic">SourceSerif4Variable-Italic.ttf
+            <axis tag="wght" stylevalue="900" />
+            <axis tag="opsz" stylevalue="20" />
+        </font>
     </family>
     <alias name="serif-bold" to="serif" weight="700" />
     <alias name="times" to="serif" />
@@ -252,9 +271,27 @@
     <alias name="goudy" to="serif" />
     <alias name="fantasy" to="serif" />
     <alias name="ITC Stone Serif" to="serif" />
+    <alias name="YuMincho" to="serif" />
+    <alias name="SimSun" to="serif" />
+    <alias name="NSimSun" to="serif" />
+    <alias name="MingLIU" to="serif" />
 
     <family name="monospace">
-        <font weight="400" style="normal">DroidSansMono.ttf</font>
+        <font weight="300" style="normal" postScriptName="FiraCode">FiraCode-VF.ttf
+            <axis tag="wght" stylevalue="300" />
+        </font>
+        <font weight="400" style="normal" postScriptName="FiraCode">FiraCode-VF.ttf
+            <axis tag="wght" stylevalue="400" />
+        </font>
+        <font weight="500" style="normal" postScriptName="FiraCode">FiraCode-VF.ttf
+            <axis tag="wght" stylevalue="500" />
+        </font>
+        <font weight="600" style="normal" postScriptName="FiraCode">FiraCode-VF.ttf
+            <axis tag="wght" stylevalue="600" />
+        </font>
+        <font weight="700" style="normal" postScriptName="FiraCode">FiraCode-VF.ttf
+            <axis tag="wght" stylevalue="700" />
+        </font>
     </family>
     <alias name="sans-serif-monospace" to="monospace" />
     <alias name="monaco" to="monospace" />
@@ -1412,126 +1449,231 @@
         <font weight="400" style="normal">NotoSansSymbols-Regular-Subsetted.ttf</font>
     </family>
     <family lang="zh-Hans">
-        <font weight="100" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="100"/>
+        <font weight="100" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
         </font>
-        <font weight="200" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="200"/>
+        <font weight="200" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
         </font>
-        <font weight="300" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="300"/>
+        <font weight="300" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
         </font>
-        <font weight="400" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="400"/>
+        <font weight="400" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
         </font>
-        <font weight="500" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="500"/>
+        <font weight="500" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
         </font>
-        <font weight="600" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="600"/>
+        <font weight="600" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
         </font>
-        <font weight="700" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="700"/>
+        <font weight="700" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
         </font>
-        <font weight="800" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="800"/>
+        <font weight="800" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
         </font>
-        <font weight="900" style="normal" index="2" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="900"/>
+        <font weight="900" style="normal" index="2" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
-        <font weight="400" style="normal" index="2" fallbackFor="serif"
-              postScriptName="NotoSerifCJKjp-Regular">NotoSerifCJK-Regular.ttc
+
+        <font weight="100" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="2" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
+        </font>
+    </family>
+    <family lang="zh-Hant-HK">
+        <font weight="100" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="4" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
+        </font>
+
+        <font weight="100" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="4" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
     </family>
     <family lang="zh-Hant,zh-Bopo">
-        <font weight="100" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="100"/>
+        <font weight="100" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
         </font>
-        <font weight="200" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="200"/>
+        <font weight="200" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
         </font>
-        <font weight="300" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="300"/>
+        <font weight="300" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
         </font>
-        <font weight="400" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="400"/>
+        <font weight="400" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
         </font>
-        <font weight="500" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="500"/>
+        <font weight="500" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
         </font>
-        <font weight="600" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="600"/>
+        <font weight="600" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
         </font>
-        <font weight="700" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="700"/>
+        <font weight="700" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
         </font>
-        <font weight="800" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="800"/>
+        <font weight="800" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
         </font>
-        <font weight="900" style="normal" index="3" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="900"/>
+        <font weight="900" style="normal" index="3" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
-        <font weight="400" style="normal" index="3" fallbackFor="serif"
-              postScriptName="NotoSerifCJKjp-Regular">NotoSerifCJK-Regular.ttc
+
+        <font weight="100" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="3" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
     </family>
     <family lang="ja">
-        <font weight="100" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="100"/>
+        <font weight="100" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
         </font>
-        <font weight="200" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="200"/>
+        <font weight="200" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
         </font>
-        <font weight="300" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="300"/>
+        <font weight="300" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
         </font>
-        <font weight="400" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="400"/>
+        <font weight="400" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
         </font>
-        <font weight="500" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="500"/>
+        <font weight="500" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
         </font>
-        <font weight="600" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="600"/>
+        <font weight="600" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
         </font>
-        <font weight="700" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="700"/>
+        <font weight="700" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
         </font>
-        <font weight="800" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="800"/>
+        <font weight="800" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
         </font>
-        <font weight="900" style="normal" index="0" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="900"/>
+        <font weight="900" style="normal" index="0" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
-        <font weight="400" style="normal" index="0" fallbackFor="serif"
-              postScriptName="NotoSerifCJKjp-Regular">NotoSerifCJK-Regular.ttc
+
+        <font weight="100" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="0" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
     </family>
     <family lang="ja">
@@ -1545,46 +1687,70 @@
         </font>
     </family>
     <family lang="ko">
-        <font weight="100" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="100"/>
+        <font weight="100" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
         </font>
-        <font weight="200" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="200"/>
+        <font weight="200" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
         </font>
-        <font weight="300" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="300"/>
+        <font weight="300" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
         </font>
-        <font weight="400" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="400"/>
+        <font weight="400" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
         </font>
-        <font weight="500" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="500"/>
+        <font weight="500" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
         </font>
-        <font weight="600" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="600"/>
+        <font weight="600" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
         </font>
-        <font weight="700" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="700"/>
+        <font weight="700" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
         </font>
-        <font weight="800" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="800"/>
+        <font weight="800" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
         </font>
-        <font weight="900" style="normal" index="1" postScriptName="NotoSansCJKJP-Regular">
-            NotoSansCJK-Regular.ttc
-            <axis tag="wght" stylevalue="900"/>
+        <font weight="900" style="normal" index="1" postScriptName="SourceHanSansVF-Regular">NotoSansCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
-        <font weight="400" style="normal" index="1" fallbackFor="serif"
-              postScriptName="NotoSerifCJKjp-Regular">NotoSerifCJK-Regular.ttc
+
+        <font weight="100" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="250.0" />
+        </font>
+        <font weight="200" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="275.0" />
+        </font>
+        <font weight="300" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="300.0" />
+        </font>
+        <font weight="400" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="400.0" />
+        </font>
+        <font weight="500" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="500.0" />
+        </font>
+        <font weight="600" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="600.0" />
+        </font>
+        <font weight="700" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="700.0" />
+        </font>
+        <font weight="800" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="800.0" />
+        </font>
+        <font weight="900" style="normal" index="1" fallbackFor="serif" postScriptName="SourceHanSerifVF-Regular">NotoSerifCJK-Regular.ttc
+            <axis tag="wght" stylevalue="900.0" />
         </font>
     </family>
+
+    <family>
+        <font weight="400" style="normal" index="0">Plangothic.ttc</font>
+    </family>
+    <family>
+        <font weight="400" style="normal" index="1">Plangothic.ttc</font>
+    </family>
+
     <family lang="und-Zsye" ignore="true">
         <font weight="400" style="normal">NotoColorEmojiLegacy.ttf</font>
     </family>

@@ -90,6 +90,7 @@
   // placed before the CJK fonts for reproducing the same fallback order.
   { "id": "NotoSansSymbols-Regular-Subsetted" },
   { "lang": "zh-Hans" },
+  { "lang": "zh-Hant-HK" },
   { "lang": "zh-Hant,zh-Bopo" },
   { "lang": "ja" },
   { "lang": "ko" },
