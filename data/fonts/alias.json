@@ -22,6 +22,10 @@
   { "name": "palatino", "to": "serif" },
   { "name": "times new roman", "to": "serif" },
   { "name": "times", "to": "serif" },
+  { "name": "YuMincho", "to": "serif" },
+  { "name": "SimSun", "to": "serif" },
+  { "name": "NSimSun", "to": "serif" },
+  { "name": "MingLIU", "to": "serif" },
   { "name": "serif-bold", "to": "serif", "weight": "700" },
 
   // monospace aliases
