@@ -1,6 +1,6 @@
 [
     {
-        "name": "monospace",
+        "name": "droid-sans-mono",
         "fonts": [
             {
                 "file": "DroidSansMono.ttf",
