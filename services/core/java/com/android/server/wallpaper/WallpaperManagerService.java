@@ -83,6 +83,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.DisplayManager.DisplayListener;
+import android.provider.Settings;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.FileObserver;
@@ -607,6 +608,8 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
     private final SparseBooleanArray mUserRestorecon = new SparseBooleanArray();
     private int mCurrentUserId = UserHandle.USER_NULL;
     private boolean mInAmbientMode;
+    /** AOD dimming overlay in effect for the current ambient session, or 0 if none. */
+    private float mAodWallpaperDimming;
     private LocalColorRepository mLocalColorRepo = new LocalColorRepository();
 
     @VisibleForTesting
@@ -1213,9 +1216,15 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
                 connector.ensureStatusHandled();
 
                 // TODO(multi-display) TBD.
-                if (mInfo != null && mInfo.supportsAmbientMode() && displayId == DEFAULT_DISPLAY) {
+                // Live wallpapers that support ambient mode always get the current ambient
+                // state. Image wallpaper (mInfo == null) also needs it when attaching while
+                // already in ambient mode so the AOD dim overlay is applied.
+                if (displayId == DEFAULT_DISPLAY
+                        && ((mInfo != null && mInfo.supportsAmbientMode())
+                                || (mInfo == null && mInAmbientMode))) {
                     try {
-                        connector.mEngine.setInAmbientMode(mInAmbientMode, 0L /* duration */);
+                        connector.mEngine.setInAmbientMode(mInAmbientMode, 0L /* duration */,
+                                mAodWallpaperDimming);
                     } catch (RemoteException e) {
                         Slog.w(TAG, "Failed to set ambient mode state", e);
                     }
@@ -2656,27 +2665,41 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
     /**
      * TODO(multi-display) Extends this method with specific display.
      * Propagate ambient state to wallpaper engine(s).
+     * <p>
+     * When AOD wallpaper dimming is non-zero, engines apply that amount as an overlay while in
+     * ambient mode. {@code applyDimming} still records the requested dim, which is restored
+     * when ambient mode ends. A dimming of 0 leaves wallpaper dimming unchanged.
      *
      * @param inAmbientMode {@code true} when in ambient mode, {@code false} otherwise.
      * @param animationDuration Duration of the animation, or 0 when immediate.
      */
     public void setInAmbientMode(boolean inAmbientMode, long animationDuration) {
         List<IWallpaperEngine> engines = new ArrayList<>();
+        // AOD dimming is an overlay: 0 means setInAmbientMode must not touch dimming.
+        final float aodWallpaperDimming = inAmbientMode ? getAodWallpaperDimming() : 0f;
         synchronized (mLock) {
             mInAmbientMode = inAmbientMode;
+            mAodWallpaperDimming = aodWallpaperDimming;
             for (WallpaperData data : getActiveWallpapers()) {
                 if (data.connection.mInfo == null
                         || data.connection.mInfo.supportsAmbientMode()) {
                     // TODO(multi-display) Extends this method with specific display.
-                    IWallpaperEngine engine = data.connection
-                            .getDisplayConnectorOrCreate(DEFAULT_DISPLAY).mEngine;
-                    if (engine != null) engines.add(engine);
+                    DisplayConnector connector = data.connection
+                            .getDisplayConnectorOrCreate(DEFAULT_DISPLAY);
+                    if (connector != null && connector.mEngine != null) {
+                        engines.add(connector.mEngine);
+                    }
                 }
             }
         }
+
+        if (inAmbientMode && aodWallpaperDimming != 0f) {
+            Slog.i(TAG, "Enter ambient mode, dim the wallpaper to " + aodWallpaperDimming);
+        }
+
         for (IWallpaperEngine engine : engines) {
             try {
-                engine.setInAmbientMode(inAmbientMode, animationDuration);
+                engine.setInAmbientMode(inAmbientMode, animationDuration, aodWallpaperDimming);
             } catch (RemoteException e) {
                 Slog.w(TAG, "Failed to set ambient mode", e);
             }
@@ -3077,6 +3100,11 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
             maxDimAmount = Math.max(maxDimAmount, uidToDimAmountMap.valueAt(i));
         }
         return maxDimAmount;
+    }
+
+    private float getAodWallpaperDimming() {
+        return Settings.Secure.getInt(mContext.getContentResolver(),
+                android.provider.Settings.Secure.DOZE_ALWAYS_ON_WALLPAPER_DIMMING, 0) / 100f;
     }
 
     @Override

@@ -20,7 +20,11 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.app.WindowConfiguration
+import android.database.ContentObserver
+import android.os.Handler
 import android.os.SystemClock
+import android.os.UserHandle
+import android.provider.Settings
 import android.util.IndentingPrintWriter
 import android.util.Log
 import android.util.MathUtils
@@ -40,6 +44,7 @@ import com.android.systemui.Flags
 import com.android.systemui.Flags.checkDesktopModeForSpacialModelAppPushback
 import com.android.systemui.animation.ShadeInterpolation
 import com.android.systemui.dagger.SysUISingleton
+import com.android.systemui.dagger.qualifiers.Main
 import com.android.systemui.dagger.qualifiers.Application
 import com.android.systemui.desktop.DesktopModeRepository
 import com.android.systemui.display.data.repository.FocusedDisplayRepository
@@ -56,6 +61,7 @@ import com.android.systemui.statusbar.phone.BiometricUnlockController.MODE_WAKE_
 import com.android.systemui.statusbar.phone.DozeParameters
 import com.android.systemui.statusbar.phone.ScrimController
 import com.android.systemui.statusbar.policy.KeyguardStateController
+import com.android.systemui.util.settings.SecureSettings
 import com.android.systemui.wallpapers.domain.interactor.WallpaperInteractor
 import com.android.systemui.window.domain.interactor.WindowRootViewBlurInteractor
 import dagger.Lazy
@@ -90,6 +96,8 @@ constructor(
     @Application private val applicationScope: CoroutineScope,
     private val desktopModeRepository: DesktopModeRepository,
     dumpManager: DumpManager,
+    private val secureSettings: SecureSettings,
+    @Main private val handler: Handler
 ) : ShadeExpansionListener, Dumpable {
     companion object {
         private const val WAKE_UP_ANIMATION_ENABLED = true
@@ -124,6 +132,7 @@ constructor(
     private var prevShadeVelocity = 0f
     private var prevDozeAmount: Float = 0f
     @VisibleForTesting var wallpaperSupportsAmbientMode: Boolean = false
+    private var dozeAlwaysOnWallpaperBlur: Boolean = true
 
     // tracks whether app launch transition is in progress. This involves two independent factors
     // that control blur, shade expansion and app launch animation from outside sysui.
@@ -395,7 +404,8 @@ constructor(
             override fun onKeyguardFadingAwayChanged() {
                 if (
                     !keyguardStateController.isKeyguardFadingAway ||
-                        biometricUnlockController.mode != MODE_WAKE_AND_DISMISS
+                        biometricUnlockController.mode != MODE_WAKE_AND_DISMISS ||
+                    !dozeAlwaysOnWallpaperBlur
                 ) {
                     return
                 }
@@ -476,7 +486,7 @@ constructor(
     }
 
     private fun getNewWakeBlurRadius(ratio: Float): Float {
-        return if (!wallpaperSupportsAmbientMode) {
+        return if (!wallpaperSupportsAmbientMode || !dozeAlwaysOnWallpaperBlur) {
             0f
         } else {
             blurUtils.blurRadiusOfRatioForAod(ratio)
@@ -519,6 +529,37 @@ constructor(
             }
         }
         initBlurListeners()
+
+        val dozeBlurUri = secureSettings.getUriFor(Settings.Secure.DOZE_ALWAYS_ON_WALLPAPER_BLUR)
+        val observer = object : ContentObserver(handler) {
+            override fun onChange(selfChange: Boolean) {
+                updateDozeBlurSetting()
+            }
+        }
+        applicationScope.launch {
+            secureSettings.registerContentObserverForUser(
+                dozeBlurUri,
+                false,
+                observer,
+                UserHandle.USER_ALL
+            )
+        }
+        updateDozeBlurSetting() // Set initial value
+    }
+
+    private fun updateDozeBlurSetting() {
+        // Default to 1 (true) or 0 (false) depending on your preference
+        dozeAlwaysOnWallpaperBlur = secureSettings.getIntForUser(
+            Settings.Secure.DOZE_ALWAYS_ON_WALLPAPER_BLUR,
+            1,
+            UserHandle.USER_CURRENT
+        ) == 1
+
+        // Force a recalculation if we are currently dozing
+        if (prevDozeAmount > 0f) {
+            updateWakeBlurRadius(prevDozeAmount)
+            scheduleUpdate()
+        }
     }
 
     private fun initBlurListeners() {

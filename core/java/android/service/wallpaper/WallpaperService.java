@@ -379,6 +379,12 @@ public abstract class WallpaperService extends Service {
         private float mCustomPersistedDimAmount = 0f;
         private float mWallpaperDimAmount = 0f;
         private float mPreviousWallpaperDimAmount = mWallpaperDimAmount;
+        /**
+         * AOD dimming overlay. When non-zero, this is the visible dim amount while in ambient
+         * mode and overrides the last {@link #updateWallpaperDimming} request. 0 means ambient
+         * mode does not change wallpaper dimming.
+         */
+        private float mAodDimAmount = 0f;
         private float mDefaultDimAmount = 0.05f;
         SurfaceControl mBbqSurfaceControl;
         // Surface control that could be used to apply transformation to the wallpaper
@@ -1089,14 +1095,38 @@ public abstract class WallpaperService extends Service {
          *                           and persisted with the user settings. This can be different
          *                           because there can be temporary dim amount to only apply but not
          *                           persist.
+         * @hide
          */
-        private void updateWallpaperDimming(float resolvedDimAmount, float persistedDimAmount) {
+        @VisibleForTesting
+        public void updateWallpaperDimming(float resolvedDimAmount, float persistedDimAmount) {
             mCustomDimAmount = Math.min(1f, resolvedDimAmount);
             mCustomPersistedDimAmount = Math.min(1f, persistedDimAmount);
+            applyWallpaperDimming(DIMMING_ANIMATION_DURATION_MS);
+        }
 
-            // If default dim is enabled, the actual dim amount is at least the default dim amount
-            mWallpaperDimAmount = (!mShouldDimByDefault) ? mCustomDimAmount
+        /**
+         * Returns the dim amount currently applied to the wallpaper surface.
+         * @hide
+         */
+        @VisibleForTesting
+        public float getWallpaperDimAmount() {
+            return mWallpaperDimAmount;
+        }
+
+        /**
+         * Visible dim amount: AOD overlay when active, otherwise the last applyDimming request
+         * (including the default dim when enabled).
+         */
+        private float getVisualDimAmount() {
+            if (mAodDimAmount != 0f) {
+                return mAodDimAmount;
+            }
+            return (!mShouldDimByDefault) ? mCustomDimAmount
                     : Math.max(mDefaultDimAmount, mCustomDimAmount);
+        }
+
+        private void applyWallpaperDimming(long animationDuration) {
+            mWallpaperDimAmount = getVisualDimAmount();
 
             if (!ENABLE_WALLPAPER_DIMMING
                     || mBbqSurfaceControl == null || !mBbqSurfaceControl.isValid()
@@ -1110,27 +1140,37 @@ public abstract class WallpaperService extends Service {
             if (!isPreview()) {
                 Log.v(TAG, "Setting wallpaper dimming: " + mWallpaperDimAmount);
 
-                // Animate dimming to gradually change the wallpaper alpha from the previous
-                // dim amount to the new amount only if the dim amount changed.
-                ValueAnimator animator = ValueAnimator.ofFloat(
-                        mPreviousWallpaperDimAmount, mWallpaperDimAmount);
-                animator.setDuration(DIMMING_ANIMATION_DURATION_MS);
-                animator.addUpdateListener((ValueAnimator va) -> {
-                    final float dimValue = (float) va.getAnimatedValue();
+                if (animationDuration > 0L) {
+                    // Animate dimming to gradually change the wallpaper alpha from the previous
+                    // dim amount to the new amount only if the dim amount changed.
+                    ValueAnimator animator = ValueAnimator.ofFloat(
+                            mPreviousWallpaperDimAmount, mWallpaperDimAmount);
+                    animator.setDuration(animationDuration);
+                    animator.addUpdateListener((ValueAnimator va) -> {
+                        final float dimValue = (float) va.getAnimatedValue();
+                        synchronized (mSurfaceReleaseLock) {
+                            if (mBbqSurfaceControl != null && mBbqSurfaceControl.isValid()) {
+                                surfaceControlTransaction
+                                        .setAlpha(mBbqSurfaceControl, 1 - dimValue).apply();
+                            }
+                        }
+                    });
+                    animator.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            updateSurface(false, -1, true);
+                        }
+                    });
+                    animator.start();
+                } else {
                     synchronized (mSurfaceReleaseLock) {
                         if (mBbqSurfaceControl != null && mBbqSurfaceControl.isValid()) {
                             surfaceControlTransaction
-                                    .setAlpha(mBbqSurfaceControl, 1 - dimValue).apply();
+                                    .setAlpha(mBbqSurfaceControl, 1 - mWallpaperDimAmount).apply();
                         }
                     }
-                });
-                animator.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        updateSurface(false, -1, true);
-                    }
-                });
-                animator.start();
+                    updateSurface(false, -1, true);
+                }
             } else {
                 Log.v(TAG, "Setting wallpaper dimming: " + 0);
                 surfaceControlTransaction.setAlpha(mBbqSurfaceControl, 1.0f).apply();
@@ -1180,6 +1220,9 @@ public abstract class WallpaperService extends Service {
                     out.println(mMergedConfiguration.getMergedConfiguration());
             out.print(prefix); out.print("mLayout="); out.println(mLayout);
             out.print(prefix); out.print("mZoom="); out.println(mZoom);
+            out.print(prefix); out.print("mCustomDimAmount="); out.print(mCustomDimAmount);
+                    out.print(" mAodDimAmount="); out.print(mAodDimAmount);
+                    out.print(" mWallpaperDimAmount="); out.println(mWallpaperDimAmount);
             out.print(prefix); out.print("mPreviewSurfacePosition=");
                     out.println(mPreviewSurfacePosition);
             final int pendingCount = mIWallpaperEngine.mPendingResizeCount.get();
@@ -1755,12 +1798,37 @@ public abstract class WallpaperService extends Service {
          */
         @VisibleForTesting
         public void doAmbientModeChanged(boolean inAmbientMode, long animationDuration) {
+            doAmbientModeChanged(inAmbientMode, animationDuration, 0f);
+        }
+
+        /**
+         * @param aodDimAmount AOD dim overlay to apply while {@code inAmbientMode} is true.
+         *                     0 leaves wallpaper dimming unchanged.
+         * @hide
+         */
+        @VisibleForTesting
+        public void doAmbientModeChanged(boolean inAmbientMode, long animationDuration,
+                float aodDimAmount) {
             if (!mDestroyed) {
                 if (DEBUG) {
                     Log.v(TAG, "onAmbientModeChanged(" + inAmbientMode + ", "
-                            + animationDuration + "): " + this);
+                            + animationDuration + ", aodDim=" + aodDimAmount + "): " + this);
                 }
                 mIsInAmbientMode = inAmbientMode;
+                final float newAodDimAmount = inAmbientMode ? aodDimAmount : 0f;
+                final boolean aodDimChanged = mAodDimAmount != newAodDimAmount;
+                mAodDimAmount = newAodDimAmount;
+                // Only touch dimming when the AOD overlay is (or was) active. aodDimAmount == 0
+                // on enter means setInAmbientMode must not change wallpaper dimming.
+                if (aodDimChanged) {
+                    if (mAodDimAmount != 0f) {
+                        Log.i(TAG, "Enter ambient mode, dim the wallpaper to " + mAodDimAmount);
+                    } else {
+                        Log.i(TAG, "Exit ambient mode, restore wallpaper dimming to "
+                                + getVisualDimAmount());
+                    }
+                    applyWallpaperDimming(animationDuration);
+                }
                 if (mCreated) {
                     onAmbientModeChanged(inAmbientMode, animationDuration);
                 }
@@ -2649,10 +2717,12 @@ public abstract class WallpaperService extends Service {
         }
 
         @Override
-        public void setInAmbientMode(boolean inAmbientDisplay, long animationDuration)
+        public void setInAmbientMode(boolean inAmbientDisplay, long animationDuration,
+                float aodDimAmount)
                 throws RemoteException {
             Message msg = mCaller.obtainMessageIO(DO_IN_AMBIENT_MODE, inAmbientDisplay ? 1 : 0,
                     animationDuration);
+            msg.arg2 = Float.floatToIntBits(aodDimAmount);
             mCaller.sendMessage(msg);
         }
 
@@ -2836,7 +2906,8 @@ public abstract class WallpaperService extends Service {
                     return;
                 }
                 case DO_IN_AMBIENT_MODE: {
-                    mEngine.doAmbientModeChanged(message.arg1 != 0, (Long) message.obj);
+                    mEngine.doAmbientModeChanged(message.arg1 != 0, (Long) message.obj,
+                            Float.intBitsToFloat(message.arg2));
                     return;
                 }
                 case MSG_UPDATE_SURFACE:
