@@ -11829,6 +11829,25 @@ public final class Settings {
                 "doze_always_on_wallpaper_enabled";
 
         /**
+         * AOD ambient wallpaper dimming amount.
+         * <p>
+         * Type: int (0 is no dimming, 100 is full black)
+         *
+         * @hide
+         */
+        public static final String DOZE_ALWAYS_ON_WALLPAPER_DIMMING =
+                "doze_always_on_wallpaper_dimming";
+
+        /**
+         * AOD ambient wallpaper blurring amount.
+         * <p>
+         * Type: int (0 for false, 1 for true)
+         *
+         * @hide
+         */
+        public static final String DOZE_ALWAYS_ON_WALLPAPER_BLUR =
+                "doze_always_on_wallpaper_blur";
+        /**
          * Whether the device should pulse on pick up gesture.
          * @hide
          */

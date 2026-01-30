@@ -117,6 +117,7 @@ import android.system.Os;
 import android.text.TextUtils;
 import android.util.EventLog;
 import android.util.IntArray;
+import android.util.Pair;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
@@ -2595,7 +2596,7 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
      * @param animationDuration Duration of the animation, or 0 when immediate.
      */
     public void setInAmbientMode(boolean inAmbientMode, long animationDuration) {
-        List<IWallpaperEngine> engines = new ArrayList<>();
+        List<Pair<IWallpaperEngine, Float>> engines = new ArrayList<>();
         synchronized (mLock) {
             mInAmbientMode = inAmbientMode;
             for (WallpaperData data : getActiveWallpapers()) {
@@ -2604,11 +2605,29 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
                     // TODO(multi-display) Extends this method with specific display.
                     IWallpaperEngine engine = data.connection
                             .getDisplayConnectorOrCreate(DEFAULT_DISPLAY).mEngine;
-                    if (engine != null) engines.add(engine);
+                    if (engine != null) engines.add(new Pair<>(engine, data.connection.mWallpaper.mWallpaperDimAmount));
                 }
             }
         }
-        for (IWallpaperEngine engine : engines) {
+
+        final float aodWallpaperDimming = getAodWallpaperDimming();
+        for (Pair<IWallpaperEngine, Float> pair : engines) {
+            IWallpaperEngine engine = pair.first;
+            if (aodWallpaperDimming != 0f) {
+                try {
+                    if (inAmbientMode) {
+                        Slog.i(TAG, "Enter ambient mode, dim the wallpaper to " + aodWallpaperDimming);
+                        engine.applyDimming(aodWallpaperDimming);
+                    } else {
+                        final float normalWallpaperDimming = pair.second;
+                        Slog.i(TAG, "Exit ambient mode, undim the wallpaper to " + normalWallpaperDimming);
+                        engine.applyDimming(normalWallpaperDimming);
+                    }
+                } catch (RemoteException e) {
+                    Slog.w(TAG, "Failed to dim wallpaper during setting ambient mode", e);
+                }
+            }
+
             try {
                 engine.setInAmbientMode(inAmbientMode, animationDuration);
             } catch (RemoteException e) {
@@ -2996,6 +3015,11 @@ public class WallpaperManagerService extends IWallpaperManager.Stub
     private boolean checkIsDimBlockedByUser() {
         return Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.BLOCK_WALLPAPER_DIMMING, 0) == 1;
+    }
+
+    private float getAodWallpaperDimming() {
+        return Settings.Secure.getInt(mContext.getContentResolver(),
+                android.provider.Settings.Secure.DOZE_ALWAYS_ON_WALLPAPER_DIMMING, 0) / 100f;
     }
 
     @Override
