@@ -59,6 +59,76 @@ public class WallpaperServiceTest {
     }
 
     @Test
+    public void testAodDimmingOverlay_preservesLastApplyDimming() {
+        WallpaperService service = new WallpaperService() {
+            @Override
+            public Engine onCreateEngine() {
+                return new Engine();
+            }
+        };
+        WallpaperService.Engine engine = service.onCreateEngine();
+        engine.setCreated(true);
+
+        engine.updateWallpaperDimming(0.2f, 0.2f);
+        assertEquals(0.2f, engine.getWallpaperDimAmount(), 0.001f);
+
+        engine.doAmbientModeChanged(true, 0, 0.5f);
+        assertEquals("AOD dimming should be the visible dim while in ambient mode",
+                0.5f, engine.getWallpaperDimAmount(), 0.001f);
+
+        engine.updateWallpaperDimming(0.3f, 0.3f);
+        assertEquals("applyDimming must not override AOD dimming while in ambient mode",
+                0.5f, engine.getWallpaperDimAmount(), 0.001f);
+
+        engine.doAmbientModeChanged(false, 0, 0f);
+        assertEquals("Exiting AOD should restore the last applyDimming amount",
+                0.3f, engine.getWallpaperDimAmount(), 0.001f);
+    }
+
+    @Test
+    public void testAodDimmingZero_doesNotChangeDimming() {
+        WallpaperService service = new WallpaperService() {
+            @Override
+            public Engine onCreateEngine() {
+                return new Engine();
+            }
+        };
+        WallpaperService.Engine engine = service.onCreateEngine();
+        engine.setCreated(true);
+
+        engine.updateWallpaperDimming(0.2f, 0.2f);
+        engine.doAmbientModeChanged(true, 0, 0f);
+        assertEquals("AOD dimming of 0 should not change wallpaper dimming",
+                0.2f, engine.getWallpaperDimAmount(), 0.001f);
+
+        engine.updateWallpaperDimming(0.4f, 0.4f);
+        assertEquals(0.4f, engine.getWallpaperDimAmount(), 0.001f);
+
+        engine.doAmbientModeChanged(false, 0, 0f);
+        assertEquals("Exiting AOD with dimming 0 should leave the last applyDimming amount",
+                0.4f, engine.getWallpaperDimAmount(), 0.001f);
+    }
+
+    @Test
+    public void testAodDimmingOverlay_restoresDimFromBeforeEnterIfUnchanged() {
+        WallpaperService service = new WallpaperService() {
+            @Override
+            public Engine onCreateEngine() {
+                return new Engine();
+            }
+        };
+        WallpaperService.Engine engine = service.onCreateEngine();
+        engine.setCreated(true);
+
+        engine.updateWallpaperDimming(0.2f, 0.2f);
+        engine.doAmbientModeChanged(true, 0, 0.5f);
+        engine.doAmbientModeChanged(false, 0, 0f);
+        assertEquals("Exiting AOD should restore dimming from before enter if applyDimming "
+                        + "was not called",
+                0.2f, engine.getWallpaperDimAmount(), 0.001f);
+    }
+
+    @Test
     public void testDeliversZoomChanged() {
         int[] zoomChangedCount = {0};
         WallpaperService service = new WallpaperService() {
