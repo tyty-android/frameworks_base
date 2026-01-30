@@ -35,7 +35,13 @@ interface IWallpaperEngine {
     oneway void setVisibility(boolean visible);
     oneway void onScreenTurningOn();
     oneway void onScreenTurnedOn();
-    oneway void setInAmbientMode(boolean inAmbientDisplay, long animationDuration);
+    /**
+     * @param aodDimAmount Extra dimming to apply while in ambient mode. When non-zero this
+     *                     overrides the last applyDimming amount until ambient mode ends.
+     *                     0 means ambient mode should not change wallpaper dimming.
+     */
+    oneway void setInAmbientMode(boolean inAmbientDisplay, long animationDuration,
+            float aodDimAmount);
     @UnsupportedAppUsage
     oneway void dispatchPointer(in MotionEvent event);
     @UnsupportedAppUsage
