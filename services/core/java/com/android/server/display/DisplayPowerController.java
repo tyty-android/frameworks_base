@@ -1780,12 +1780,34 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
 
             final float currentBrightness = mPowerState.getScreenBrightness();
             final float currentSdrBrightness = mPowerState.getSdrScreenBrightness();
+            final boolean isDozingWakeup = mDozing && state == Display.STATE_ON;
+
+            if (isDozingWakeup) {
+                // Quirk: adjust brightness a little bit, so some brightness update command
+                // will be sent to the panel and wake it up from screen-off state.
+                final float delta = 0.0001f;
+                if (animateValue == currentBrightness) {
+                    if (animateValue + delta > 1.0f) {
+                        animateValue -= delta;
+                    } else {
+                        animateValue += delta;
+                    }
+                }
+                if (sdrAnimateValue == currentSdrBrightness) {
+                    if (sdrAnimateValue + delta > 1.0f) {
+                        sdrAnimateValue -= delta;
+                    } else {
+                        sdrAnimateValue += delta;
+                    }
+                }
+                Slog.d(mTag, "WAR panel quirk: currentBrightness=" + currentBrightness + ", animateValue=" + animateValue + ", currentSdrBrightness=" + currentSdrBrightness + ", sdrAnimateValue=" + sdrAnimateValue);
+            }
 
             if (BrightnessUtils.isValidBrightnessValue(animateValue)
                     && (animateValue != currentBrightness
                     || sdrAnimateValue != currentSdrBrightness)) {
                 boolean skipAnimation = initialRampSkip || hasBrightnessBuckets
-                        || !isDisplayContentVisible || brightnessIsTemporary;
+                        || !isDisplayContentVisible || brightnessIsTemporary || isDozingWakeup;
                 final boolean isHdrOnlyChange = BrightnessSynchronizer.floatEquals(
                         sdrAnimateValue, currentSdrBrightness);
                 if (mFlags.isFastHdrTransitionsEnabled() && !skipAnimation && isHdrOnlyChange) {
