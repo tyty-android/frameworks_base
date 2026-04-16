@@ -47,6 +47,7 @@ import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import com.android.compose.theme.PlatformTheme
 import com.android.systemui.shared.recents.utilities.Utilities
 import com.android.systemui.axdynamicbar.model.IslandEvent
+import com.android.systemui.axdynamicbar.shared.SpaceXxs
 import com.android.systemui.axdynamicbar.ui.compose.ExpandedIslandContent
 import com.android.systemui.dagger.SysUISingleton
 import com.android.systemui.dagger.qualifiers.Application
@@ -245,9 +246,8 @@ private fun OverlayContent(viewModel: AxDynamicBarChipViewModel, statusBarHeight
     val isLargeScreen = Utilities.isLargeScreen(LocalContext.current)
 
     val largeScreenExtra = if (isLargeScreen) 4.dp else 0.dp
-    val baseTopPad = 4.dp
-    val topPad = baseTopPad + if (hasCutout) largeScreenExtra
-        else with(density) { statusBarHeightPx.toDp() } + largeScreenExtra
+    val topPad = if (hasCutout) largeScreenExtra
+        else with(density) { statusBarHeightPx.toDp() } + largeScreenExtra - SpaceXxs
     val chipState by viewModel.chipState.collectAsStateWithLifecycle()
     val isExpanded by viewModel.isExpanded.collectAsStateWithLifecycle()
 
