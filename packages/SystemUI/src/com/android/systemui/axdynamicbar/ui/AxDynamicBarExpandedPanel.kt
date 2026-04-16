@@ -48,6 +48,7 @@ import com.android.compose.theme.PlatformTheme
 import com.android.systemui.shared.recents.utilities.Utilities
 import com.android.systemui.axdynamicbar.model.IslandEvent
 import com.android.systemui.axdynamicbar.shared.ExpandedMaxWidth
+import com.android.systemui.axdynamicbar.shared.SpaceXxs
 import com.android.systemui.axdynamicbar.ui.compose.ExpandedIslandContent
 import com.android.systemui.axdynamicbar.ui.compose.NotificationAlertCard
 import com.android.systemui.dagger.SysUISingleton
@@ -251,7 +252,7 @@ private fun OverlayContent(viewModel: AxDynamicBarChipViewModel, statusBarHeight
 
     val largeScreenExtra = if (isLargeScreen) 4.dp else 0.dp
     val topPad = if (hasCutout) largeScreenExtra
-        else with(density) { statusBarHeightPx.toDp() } + largeScreenExtra
+        else with(density) { statusBarHeightPx.toDp() } + largeScreenExtra - SpaceXxs
     val chipState by viewModel.chipState.collectAsStateWithLifecycle()
     val isExpanded by viewModel.isExpanded.collectAsStateWithLifecycle()
     val uiState by viewModel.interactor.uiState.collectAsStateWithLifecycle()
