@@ -56,9 +56,11 @@ class WallpaperDisplayHelper {
 
     private final SparseArray<DisplayData> mDisplayDatas = new SparseArray<>();
     private final DisplayManager mDisplayManager;
+    private final WindowManager mWindowManager;
     private final WindowManagerInternal mWindowManagerInternal;
+    private final Resources mResources;
 
-    private final WallpaperDefaultDisplayInfo mDefaultDisplayInfo;
+    private WallpaperDefaultDisplayInfo mDefaultDisplayInfo;
 
     WallpaperDisplayHelper(
             DisplayManager displayManager,
@@ -66,7 +68,9 @@ class WallpaperDisplayHelper {
             WindowManagerInternal windowManagerInternal,
             Resources resources) {
         mDisplayManager = displayManager;
+        mWindowManager = windowManager;
         mWindowManagerInternal = windowManagerInternal;
+        mResources = resources;
         mDefaultDisplayInfo = new WallpaperDefaultDisplayInfo(windowManager, resources);
     }
 
@@ -88,6 +92,16 @@ class WallpaperDisplayHelper {
 
     void removeDisplayData(int displayId) {
         mDisplayDatas.remove(displayId);
+    }
+
+    void refreshDisplayData(int displayId) {
+        if (displayId == DEFAULT_DISPLAY) {
+            mDefaultDisplayInfo = new WallpaperDefaultDisplayInfo(mWindowManager, mResources);
+        }
+        final DisplayData wpdData = mDisplayDatas.get(displayId);
+        if (wpdData != null) {
+            ensureSaneWallpaperDisplaySize(wpdData, displayId);
+        }
     }
 
     void ensureSaneWallpaperDisplaySize(DisplayData wpdData, int displayId) {
