@@ -137,10 +137,17 @@ constructor(
         )
 
     val statusBarHeightPx: Int by
-        systemBarUtilsState.statusBarHeight.hydratedStateOf(
-            traceName = "NotificationsShadeOverlayContentViewModel#statusBarHeight",
-            initialValue = resources.getDimensionPixelSize(R.dimen.status_bar_height),
-        )
+        systemBarUtilsState.statusBarHeight
+            .map { statusBarHeight ->
+                maxOf(
+                    statusBarHeight,
+                    resources.getDimensionPixelSize(R.dimen.qs_header_height),
+                )
+            }
+            .hydratedStateOf(
+                traceName = "NotificationsShadeOverlayContentViewModel#statusBarHeight",
+                initialValue = resources.getDimensionPixelSize(R.dimen.qs_header_height),
+            )
 
     /**
      * Calculates the blur radius to apply to the overlay.
