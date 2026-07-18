@@ -16,6 +16,7 @@
 
 package com.android.systemui.shade.ui.viewmodel
 
+import android.content.res.mainResources
 import com.android.systemui.battery.batteryMeterViewControllerFactory
 import com.android.systemui.clock.domain.interactor.clockInteractor
 import com.android.systemui.desktop.domain.interactor.desktopInteractor
@@ -61,6 +62,7 @@ val Kosmos.shadeHeaderViewModelFactory: ShadeHeaderViewModel.Factory by
                     mobileIconsViewModelKairos = { mobileIconsViewModelKairos },
                     dualShadeEducationInteractor = dualShadeEducationInteractor,
                     desktopInteractor = desktopInteractor,
+                    resources = mainResources,
                     systemStatusIconsViewModelFactory = systemStatusIconsViewModelFactory,
                     systemBarUtilsState = systemBarUtilsState,
                     systemStatusIconsBlockListInteractor = emptySystemStatusIconBlockListInteractor,
