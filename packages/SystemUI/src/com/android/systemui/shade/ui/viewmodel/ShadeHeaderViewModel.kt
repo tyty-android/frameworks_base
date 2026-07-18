@@ -18,6 +18,7 @@ package com.android.systemui.shade.ui.viewmodel
 
 import android.app.ActivityManager
 import android.content.Intent
+import android.content.res.Resources
 import android.provider.Settings
 import android.view.ViewGroup
 import androidx.compose.runtime.derivedStateOf
@@ -31,6 +32,7 @@ import com.android.systemui.lifecycle.HydratedActivatable
 import com.android.systemui.plugins.ActivityStarter
 import com.android.systemui.privacy.AbstractOngoingPrivacyChip
 import com.android.systemui.privacy.PrivacyItem
+import com.android.systemui.res.R
 import com.android.systemui.scene.domain.interactor.DualShadeEducationInteractor
 import com.android.systemui.scene.domain.interactor.SceneInteractor
 import com.android.systemui.scene.domain.model.DualShadeEducationModel
@@ -83,6 +85,7 @@ constructor(
     val mobileIconsViewModelKairos: dagger.Lazy<MobileIconsViewModelKairos>,
     private val dualShadeEducationInteractor: DualShadeEducationInteractor,
     desktopInteractor: DesktopInteractor,
+    @ShadeDisplayAware private val resources: Resources,
     @ShadeDisplayAware systemBarUtilsState: SystemBarUtilsState,
     @Assisted private val ignoreTestHarness: Boolean,
 ) : HydratedActivatable() {
@@ -167,10 +170,17 @@ constructor(
             }
 
     val statusBarHeightPx: Int by
-        systemBarUtilsState.statusBarHeight.hydratedStateOf(
-            traceName = "ShadeHeader#statusBarHeight",
-            initialValue = 0,
-        )
+        systemBarUtilsState.statusBarHeight
+            .map { statusBarHeight ->
+                maxOf(
+                    statusBarHeight,
+                    resources.getDimensionPixelSize(R.dimen.qs_header_height),
+                )
+            }
+            .hydratedStateOf(
+                traceName = "ShadeHeader#statusBarHeight",
+                initialValue = resources.getDimensionPixelSize(R.dimen.qs_header_height),
+            )
 
     private val useDesktopStatusBar: Boolean by
         desktopInteractor.useDesktopStatusBar.hydratedStateOf(
