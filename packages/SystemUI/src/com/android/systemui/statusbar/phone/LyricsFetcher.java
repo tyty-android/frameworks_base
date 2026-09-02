@@ -278,7 +278,8 @@ public class LyricsFetcher {
         || p.contains("youtube")
         || p.contains("youtubemusic")
         || p.contains("vanced")
-        || p.contains("rvx");
+        || p.contains("rvx")
+        || p.contains("audioplayer");
     }
 
     private void maybeFetchForCurrentMetadata() {
